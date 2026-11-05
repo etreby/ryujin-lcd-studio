@@ -1,0 +1,48 @@
+{
+  "background_color": "100713",
+  "background_opacity": 1.0,
+  "font_color": "B300FF",
+  "interval": 5,
+  "title": "RYUJIN III EXTREME",
+  "background": null,
+  "layout": {
+    "liquid": {
+      "background_color": null,
+      "font_color": null,
+      "stats": [
+        {
+          "stat": "liquid_temperature",
+          "indicator": "LIQUID"
+        }
+      ]
+    },
+    "pump": {
+      "background_color": null,
+      "font_color": null,
+      "stats": [
+        {
+          "stat": "pump_speed",
+          "indicator": "PUMP"
+        },
+        {
+          "stat": "pump_duty",
+          "indicator": "PUMP"
+        }
+      ]
+    },
+    "pump_fan": {
+      "background_color": null,
+      "font_color": null,
+      "stats": [
+        {
+          "stat": "pump_fan_speed",
+          "indicator": "PUMP FAN"
+        },
+        {
+          "stat": "pump_fan_duty",
+          "indicator": "PUMP FAN"
+        }
+      ]
+    }
+  }
+}

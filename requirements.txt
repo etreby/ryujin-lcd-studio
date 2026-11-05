@@ -1,0 +1,3 @@
+PyQt5>=5.15.10,<5.16
+Pillow>=10,<14
+liquidctl @ git+https://github.com/Aenima4six2/liquidctl.git@87250180944d2626d25fc37cf4a6240068f44e18
