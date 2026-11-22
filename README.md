@@ -137,6 +137,33 @@ QT_QPA_PLATFORM=offscreen ~/.local/share/ryujin-lcd-studio/venv/bin/python app.p
 The display stays at the driver's existing behavior until Apply is used.
 
 
+## Frame pusher daemon (ryujin_daemon)
+
+`ryujin_daemon` is the headless USB HID frame pusher for the Ryujin III LCD
+(`0b05:1bcb`). It implements the transport interface from the approved ETR-1802
+design: PyUSB bulk transport, deterministic mock backend for hosts without
+hardware, automatic reconnect on device-absent/disconnect/reconnect, a JSON
+layout contract with a published JSON Schema, and a systemd unit.
+
+Setup on Ubuntu/Fedora (Python 3.10+, libusb-1.0-0):
+
+```sh
+python3 -m venv .venv && .venv/bin/pip install pyusb
+python -m ryujin_daemon.cli --backend mock --once        # deterministic test frame, no hardware
+python -m ryujin_daemon.cli --backend usb --once         # real device, exits 1 when absent
+python -m ryujin_daemon.cli --backend usb --fps 30       # continuous 30 fps push
+python -m ryujin_daemon.cli --export-schema schemas/layout.schema.json
+```
+
+Install `udev/70-ryujin-lcd.rules` to udev rules and reload for non-root device
+access; `systemd/ryujin-frame-pusher.service` shows a hardened unit template.
+
+Tests (mock backend covers device-absent, disconnect/reconnect, chunking):
+
+```sh
+python -m unittest discover -s tests
+```
+
 ## License and validation
 
 GPL-3.0; see [LICENSE](LICENSE). PyQt5, Pillow and liquidctl retain their own
