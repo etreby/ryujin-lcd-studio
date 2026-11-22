@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ryujin-lcd-studio/layout.schema.json",
+  "title": "Ryujin III LCD layout",
+  "type": "object",
+  "required": [
+    "width",
+    "height",
+    "format"
+  ],
+  "properties": {
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "gray8"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

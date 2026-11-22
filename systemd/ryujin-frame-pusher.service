@@ -1,0 +1,19 @@
+[Unit]
+Description=Ryujin III LCD frame pusher daemon
+Documentation=file:///usr/share/doc/ryujin-lcd-studio/README.md
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/opt/ryujin-lcd-studio/ryujin-frame-pusher --backend usb --fps 30
+Restart=always
+RestartSec=5
+# Only USB device access is required; harden the rest.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+MemoryDenyWriteExecute=yes
+
+[Install]
+WantedBy=multi-user.target
